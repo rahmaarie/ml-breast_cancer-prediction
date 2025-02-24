@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Kanker Payudara</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediksi Kanker Payudara</h1>
+
+        <form action="/predict" method="post">
+            <div class="form-container">
+                <!-- Kolom kiri -->
+                <div class="column">
+                    <label for="feature1">Mean Radius:</label>
+                    <input type="number" step="any" id="feature1" name="feature1" value="{{ input_values.get('feature1', '') }}" required>
+
+                    <label for="feature2">Mean Texture:</label>
+                    <input type="number" step="any" id="feature2" name="feature2" value="{{ input_values.get('feature2', '') }}" required>
+
+                    <label for="feature3">Mean Perimeter:</label>
+                    <input type="number" step="any" id="feature3" name="feature3" value="{{ input_values.get('feature3', '') }}" required>
+
+                    <label for="feature4">Mean Area:</label>
+                    <input type="number" step="any" id="feature4" name="feature4" value="{{ input_values.get('feature4', '') }}" required>
+
+                    <label for="feature5">Mean Smoothness:</label>
+                    <input type="number" step="any" id="feature5" name="feature5" value="{{ input_values.get('feature5', '') }}" required>
+
+                    <label for="feature6">Mean Compactness:</label>
+                    <input type="number" step="any" id="feature6" name="feature6" value="{{ input_values.get('feature6', '') }}" required>
+
+                    <label for="feature7">Mean Concavity:</label>
+                    <input type="number" step="any" id="feature7" name="feature7" value="{{ input_values.get('feature7', '') }}" required>
+
+                    <label for="feature8">Mean Concave Points:</label>
+                    <input type="number" step="any" id="feature8" name="feature8" value="{{ input_values.get('feature8', '') }}" required>
+
+                    <label for="feature9">Mean Symmetry:</label>
+                    <input type="number" step="any" id="feature9" name="feature9" value="{{ input_values.get('feature9', '') }}" required>
+
+                    <label for="feature10">Mean Fractal Dimension:</label>
+                    <input type="number" step="any" id="feature10" name="feature10" value="{{ input_values.get('feature10', '') }}" required>
+
+                    <label for="feature11">Radius Error:</label>
+                    <input type="number" step="any" id="feature11" name="feature11" value="{{ input_values.get('feature11', '') }}" required>
+
+                    <label for="feature12">Texture Error:</label>
+                    <input type="number" step="any" id="feature12" name="feature12" value="{{ input_values.get('feature12', '') }}" required>
+
+                    <label for="feature13">Perimeter Error:</label>
+                    <input type="number" step="any" id="feature13" name="feature13" value="{{ input_values.get('feature13', '') }}" required>
+
+                    <label for="feature14">Area Error:</label>
+                    <input type="number" step="any" id="feature14" name="feature14" value="{{ input_values.get('feature14', '') }}" required>
+
+                    <label for="feature15">Smoothness Error:</label>
+                    <input type="number" step="any" id="feature15" name="feature15" value="{{ input_values.get('feature15', '') }}" required>
+                </div>
+
+                <!-- Kolom kanan -->
+                <div class="column">
+                    <label for="feature16">Compactness Error:</label>
+                    <input type="number" step="any" id="feature16" name="feature16" value="{{ input_values.get('feature16', '') }}" required>
+
+                    <label for="feature17">Concavity Error:</label>
+                    <input type="number" step="any" id="feature17" name="feature17" value="{{ input_values.get('feature17', '') }}" required>
+
+                    <label for="feature18">Concave Points Error:</label>
+                    <input type="number" step="any" id="feature18" name="feature18" value="{{ input_values.get('feature18', '') }}" required>
+
+                    <label for="feature19">Symmetry Error:</label>
+                    <input type="number" step="any" id="feature19" name="feature19" value="{{ input_values.get('feature19', '') }}" required>
+
+                    <label for="feature20">Fractal Dimension Error:</label>
+                    <input type="number" step="any" id="feature20" name="feature20" value="{{ input_values.get('feature20', '') }}" required>
+
+                    <label for="feature21">Worst Radius:</label>
+                    <input type="number" step="any" id="feature21" name="feature21" value="{{ input_values.get('feature21', '') }}" required>
+
+                    <label for="feature22">Worst Texture:</label>
+                    <input type="number" step="any" id="feature22" name="feature22" value="{{ input_values.get('feature22', '') }}" required>
+
+                    <label for="feature23">Worst Perimeter:</label>
+                    <input type="number" step="any" id="feature23" name="feature23" value="{{ input_values.get('feature23', '') }}" required>
+
+                    <label for="feature24">Worst Area:</label>
+                    <input type="number" step="any" id="feature24" name="feature24" value="{{ input_values.get('feature24', '') }}" required>
+
+                    <label for="feature25">Worst Smoothness:</label>
+                    <input type="number" step="any" id="feature25" name="feature25" value="{{ input_values.get('feature25', '') }}" required>
+
+                    <label for="feature26">Worst Concavity:</label>
+                    <input type="number" step="any" id="feature26" name="feature26" value="{{ input_values.get('feature26', '') }}" required>
+
+                    <label for="feature27">Worst Concave Points:</label>
+                    <input type="number" step="any" id="feature27" name="feature27" value="{{ input_values.get('feature27', '') }}" required>
+
+                    <label for="feature28">Worst Symmetry:</label>
+                    <input type="number" step="any" id="feature28" name="feature28" value="{{ input_values.get('feature28', '') }}" required>
+
+                    <label for="feature29">Worst Fractal Dimension:</label>
+                    <input type="number" step="any" id="feature29" name="feature29" value="{{ input_values.get('feature29', '') }}" required>
+                </div>
+            </div>
+
+            <button type="submit">Prediksi</button>
+        </form>
+
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
